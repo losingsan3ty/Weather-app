@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./src/css/style.css" />
+    <link rel="icon" class="preview-icon" href="./src/Img/logo.svg" />
+    <!-- <link rel="stylesheet" href="" /> -->
+    <script type="module" src="./src/js/controller.js"></script>
+    <!-- font awesome  -->
+    <link
+      rel="stylesheet"
+      href="./src/Img/fontawesome-free-6.1.1-web/css/all.min.css"
+    />
+    <title>Weather</title>
+  </head>
+  <body>
+    <!-- nav  -->
+    <nav class="nav">
+      <img class="logo" src="./src/Img/logo.svg" alt="" />
+      <div class="nav-control">
+        <form class="search" action="">
+          <i class="fa-solid fa-magnifying-glass search-icon"></i>
+          <input placeholder="Search city" class="search-input" type="text" />
+        </form>
+        <select class="status" name="status">
+          <option class="option" value="Current">Current</option>
+          <option class="option" value="Daily">Daily</option>
+          <option class="option" value="Hourly">Hourly</option>
+        </select>
+        <span class="nav-btn"><i class="fa -solid fa-bars bars"></i></span>
+      </div>
+      <div class="nav-menu nav-slide">
+        <span class="btn-close-menu"><i class="fa-solid fa-xmark"></i></span>
+        <ul class="nav-list">
+          <li>Current</li>
+          <li>hourly</li>
+          <li>daily</li>
+          <li>Footer</li>
+        </ul>
+      </div>
+      <div class="modal hidden"></div>
+    </nav>
+    <!-- end of nav -->
+    <!-- card -->
+    <div class="card hidden">
+      <svg class="card-image">
+        <use href="./src/Img/icons.svg#PM-Drizzle"></use>
+      </svg>
+      <span class="btn-close-card">
+        <i class="fa-solid fa-xmark"></i>
+      </span>
+      <div class="card-content">
+        <div class="card-grid">
+          <h3 class="align--text-left">Baghdad</h3>
+        </div>
+        <div class="card-grid">
+          <div class="card-flex">
+            <span class="align--text-left">cloudy</span>
+          </div>
+          <div><span>12:00 </span> <span>AM</span></div>
+        </div>
+        <div class="card-grid">
+          <span>20 C</span>
+          <div class="card-flex">
+            <svg class="card-weather-icon">
+              <use href="./src/Img/icons.svg#temp-icon"></use>
+              <span>Temp:</span>
+            </svg>
+          </div>
+        </div>
+        <div class="card-grid">
+          <span class="align--text-left">Feels like:</span>
+          <div>30</div>
+        </div>
+        <div class="card-grid">
+          <div>
+            <span>14 </span>
+            <span>km/h</span>
+          </div>
+          <div class="card-flex">
+            <svg class="card-weather-icon">
+              <use href="./src/Img/icons.svg#humidity-icon"></use>
+            </svg>
+            <span>Humidity:</span>
+          </div>
+        </div>
+        <div class="card-grid">
+          <span>10</span>
+          <div class="card-flex">
+            <svg class="card-weather-icon">
+              <use href="./src/Img/icons.svg#uv-icon"></use>
+            </svg>
+            <span>uv</span>
+          </div>
+        </div>
+        <div class="card-grid">
+          <span>14</span>
+          <div class="card-flex">
+            <svg class="card-weather-icon">
+              <use href="./src/Img/icons.svg#windSpeed-icon"></use>
+            </svg>
+            <span>Windspeed:</span>
+          </div>
+        </div>
+        <div class="card-grid">
+          <div>
+            <span>12:00 </span>
+            <span>PM</span>
+          </div>
+          <div class="card-flex">
+            <svg class="card-weather-icon">
+              <use
+                class="card-weather-icon"
+                href="./src/Img/icons.svg#sunRise-icon"
+              ></use>
+            </svg>
+            <span>Sunrise:</span>
+          </div>
+        </div>
+        <div class="card-grid">
+          <div>
+            <span>12:00</span>
+            <span>AM</span>
+          </div>
+          <div class="card-flex">
+            <svg class="card-weather-icon">
+              <use
+                class="card-weather-icon"
+                href="./src/Img/icons.svg#sunRise-icon"
+              ></use>
+            </svg>
+            <span>Sunrise:</span>
+          </div>
+        </div>
+        <div class="card-grid">
+          <div>
+            <span>12:00 </span>
+            <span>AM</span>
+          </div>
+          <div class="card-flex">
+            <span>Sunset:</span>
+            <svg class="card-weather-icon">
+              <use href="./src/Img/icons.svg#sunSet-icon"></use>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal hidden"></div>
+    <!-- end of card -->
+    <div class="display">
+      <ul class="row-display">
+        <!-- <li class="preview">
+          <span>day/hour</span>
+          <span>
+            <img
+              class="preview-image"
+              src="http://openweathermap.org/img/wn/10d@2x.png"
+              alt="icon"
+          /></span>
+          <span>15C</span>
+          <span>clear</span>
+          <span class="preview-btn">more info</span>
+        </li> -->
+      </ul>
+    </div>
+    <div class="test"></div>
+    <footer>
+      <div class="credits">
+        <a
+          href="https://github.com/dohliam/elegant-circles"
+          title="weather icons"
+          target="_blink"
+          >Weather icon created by dohliam -svgrepo
+        </a>
+        <a href="https://github.com/rickellis/SVG-Weather-Icons"
+          >weather icon
+        </a>
+        <a
+          class="insta-icon"
+          href="https://www.instagram.com/losingsan3ty/"
+          target="_blink"
+          ><img src="./src/Img/instagram.svg" alt="isntagram"
+        /></a>
+      </div>
+    </footer>
+    <button class="test-btn">a</button>
+  </body>
+</html>

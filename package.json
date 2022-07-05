@@ -1,0 +1,14 @@
+{
+  "name": "weather-app",
+  "version": "1.0.0",
+  "description": "Simple weather site",
+  "scripts": {
+    "start": "parcel Index.html ",
+    "build": "parcel build index.html"
+  },
+  "author": "Adnan",
+  "license": "ISC",
+  "devDependencies": {
+    "parcel": "^2.5.0"
+  }
+}
