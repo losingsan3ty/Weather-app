@@ -2,7 +2,6 @@ import { Model } from "./model";
 import { card } from "./view/cardView";
 import dailyHourlyView from "./view/daily-hourlyView";
 import { Nav } from "./view/navView";
-import View from "./view/View";
 import searchView from "./view/searchView";
 const renderSearchResult = async function () {
   try {
@@ -12,7 +11,7 @@ const renderSearchResult = async function () {
       return;
     }
     const data = await Model.getWeatherData(query);
-    card.render(data.curr, data.location);
+    card.render.bind(this, data.curr, data.location);
     console.log(data.hourly);
   } catch (err) {
     console.error(err.message);

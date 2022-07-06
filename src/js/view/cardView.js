@@ -15,11 +15,19 @@ class Card extends View {
       this._cardModal,
       this.toggle.bind(this, this._parentElement, this._cardModal, false)
     );
+    this.btnClickCard.call(this);
+    this._btnCloseCard.addEventListener("onblur event ", function (e) {
+      console.log(e);
+    });
+  }
+  btnClickCard() {
     this.btnClick.call(
       this,
       this._btnCloseCard,
       this.toggle.bind(this, this._parentElement, this._cardModal, false)
     );
+
+    return "";
   }
   testBtnClick() {
     this._testBtn.addEventListener(
@@ -35,22 +43,15 @@ class Card extends View {
     return "";
   }
   _generateMarkup(data, location) {
-    // <svg class="card-image">
-    //   <use
-    //     href="${icons}#${data.date.day_night.toUpperCase()}-${
-    //   data.weather.main
-    // }"
-    //   ></use>
-    // </svg>;
-    // <img class="card-image" src="http://openweathermap.org/img/wn/${data.weather.icon}@2x.png" alt=""></img>
-
     return `
      <svg class="card-image">
         <use href="${icons}#${data.date.day_night.toUpperCase()}-${
       data.icon
     }"></use>
       </svg>
-      <span class="btn-close-card"><i class="fa-solid fa-xmark"></i></span>
+      <span class="btn-close-card"><i class="fa-solid fa-xmark"></i></span>${this.btnClick.call(
+        this
+      )}
       <div class="card-content">
         <div class="card-grid">
           <h3 class="align--text-left">${location}</h3>

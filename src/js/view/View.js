@@ -6,6 +6,9 @@ export default class View {
   toggleModalClick(modal, toggleFunction) {
     modal.addEventListener("click", toggleFunction);
   }
+  constructor() {
+    console.log("hi");
+  }
   /**
    *
    * @param {string} El represent the parent El we want to show and hide
