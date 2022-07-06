@@ -6,17 +6,17 @@ class Nav extends View {
   _btnCloseNav = document.querySelector(".btn-close-menu");
   constructor() {
     super();
-    this.btnClick.call(
+    this.toggleOnClick.call(
       this,
       this._navBtn,
       this.toggle.bind(this, this._parentElement, this._navModal, true)
     );
-    this.toggleModalClick.call(
+    this.toggleOnClick.call(
       this,
       this._navModal,
       this.toggle.bind(this, this._parentElement, this._navModal, true)
     );
-    this.btnClick.call(
+    this.toggleOnClick.call(
       this,
       this._btnCloseNav,
       this.toggle.bind(this, this._parentElement, this._navModal, true)

@@ -5,28 +5,30 @@ import View from "./View.js";
 class Card extends View {
   _parentElement = document.querySelector(".card");
   _cardModal = this._parentElement.nextElementSibling;
-  _btnCloseCard = document.querySelector(".btn-close-card");
+
   _testBtn = document.querySelector(".test-btn");
+
   constructor() {
     super();
+
     this.testBtnClick.call(this);
-    this.toggleModalClick.call(
+    this.toggleOnClick.call(
       this,
       this._cardModal,
       this.toggle.bind(this, this._parentElement, this._cardModal, false)
     );
     this.btnClickCard.call(this);
-    this._btnCloseCard.addEventListener("onblur event ", function (e) {
-      console.log(e);
-    });
+    // this._btnCloseCard.addEventListener("onblur event ", function (e) {
+    //   console.log(e);
+    // });
   }
+
   btnClickCard() {
-    this.btnClick.call(
-      this,
-      this._btnCloseCard,
+    const btn = document.querySelector(".btn-close-card");
+    this.toggleOnClick(
+      btn,
       this.toggle.bind(this, this._parentElement, this._cardModal, false)
     );
-
     return "";
   }
   testBtnClick() {
@@ -49,9 +51,7 @@ class Card extends View {
       data.icon
     }"></use>
       </svg>
-      <span class="btn-close-card"><i class="fa-solid fa-xmark"></i></span>${this.btnClick.call(
-        this
-      )}
+      <span class="btn-close-card"><i class="fa-solid fa-xmark"></i></span>
       <div class="card-content">
         <div class="card-grid">
           <h3 class="align--text-left">${location}</h3>

@@ -1,14 +1,12 @@
+import { card } from "./cardView";
+
 export default class View {
   _data;
-  btnClick(btn, toggleFunction) {
-    btn.addEventListener("click", toggleFunction);
+
+  toggleOnClick(El, toggleFunction) {
+    El.addEventListener("click", toggleFunction);
   }
-  toggleModalClick(modal, toggleFunction) {
-    modal.addEventListener("click", toggleFunction);
-  }
-  constructor() {
-    console.log("hi");
-  }
+
   /**
    *
    * @param {string} El represent the parent El we want to show and hide
@@ -23,13 +21,14 @@ export default class View {
     // if (!data || (Array.isArray(data) && data.length === 0))
     //   return this.renderError();
     this._data = data;
-    // console.log(this._data);
+    console.log(this._data);
+
     const markup = this._generateMarkup(data, location);
     this._clear();
     // console.log(this);
     // this._parentElement.insertAdjacentHTML("afterbegin", "hi");
-    // console.log(markup);
     this._parentElement.insertAdjacentHTML("afterbegin", markup);
+    if (this === card) card.btnClickCard();
   }
   _clear() {
     this._parentElement.innerHTML = "";

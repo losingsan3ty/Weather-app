@@ -168,9 +168,9 @@ class Data {
       const location = data.timezone
         .slice(data.timezone.indexOf("/") + 1)
         .replace("_", " ");
-      console.log(curr);
-      console.log(hourly);
-      console.log(daily);
+      // console.log(curr);
+      // console.log(hourly);
+      // console.log(daily);
       return Object.freeze({ curr, daily, hourly, location });
     } catch (err) {
       console.log(err.message);
