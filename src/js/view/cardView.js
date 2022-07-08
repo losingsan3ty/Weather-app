@@ -5,12 +5,10 @@ import View from "./View.js";
 class Card extends View {
   _parentElement = document.querySelector(".card");
   _cardModal = this._parentElement.nextElementSibling;
-
+  _btnCloseCard = document.querySelector(".btn-close-card");
   _testBtn = document.querySelector(".test-btn");
-
   constructor() {
     super();
-
     this.testBtnClick.call(this);
     this.toggleOnClick.call(
       this,
@@ -18,11 +16,7 @@ class Card extends View {
       this.toggle.bind(this, this._parentElement, this._cardModal, false)
     );
     this.btnClickCard.call(this);
-    // this._btnCloseCard.addEventListener("onblur event ", function (e) {
-    //   console.log(e);
-    // });
   }
-
   btnClickCard() {
     const btn = document.querySelector(".btn-close-card");
     this.toggleOnClick(
