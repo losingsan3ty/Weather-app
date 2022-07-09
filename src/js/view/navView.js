@@ -4,6 +4,7 @@ class Nav extends View {
   _parentElement = document.querySelector(".nav-menu");
   _navBtn = document.querySelector(".nav-btn");
   _btnCloseNav = document.querySelector(".btn-close-menu");
+  _selectEl = document.querySelector(".status");
   constructor() {
     super();
     this.toggleOnClick.call(
@@ -21,6 +22,14 @@ class Nav extends View {
       this._btnCloseNav,
       this.toggle.bind(this, this._parentElement, this._navModal, true)
     );
+  }
+  initialSelectOption() {
+    return this._selectEl.value;
+  }
+  addHandlerSelect(handler) {
+    this._selectEl.addEventListener("change", function (e) {
+      handler(this.value);
+    });
   }
 }
 export default new Nav();

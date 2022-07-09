@@ -99,11 +99,13 @@ class Data {
       icon: this._icon_id_finder(data.weather),
       date: daily ? this._getDay(tempData.dt) : getHour(tempData.dt),
       humidity: tempData.humidity,
-      temp: tempData.temp,
+      temp: daily ? Object.entries(tempData.temp) : tempData.temp,
       weather: Object.freeze(tempData.weather[0]),
       uv: tempData.uvi,
       windSpeed: tempData.wind_speed,
-      feelsLike: tempData.feels_like,
+      feelsLike: daily
+        ? Object.entries(tempData.feels_like)
+        : tempData.feels_like,
       ...(tempData.sunrise && { sunRise: getHour(tempData.sunrise) }),
       ...(tempData.sunset && { sunSet: getHour(tempData.sunset) }),
     };

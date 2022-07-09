@@ -3,17 +3,19 @@ import View from "./View.js";
 
 // console.log(icons);
 class Card extends View {
+  _card_container = document.querySelector(".card-container");
   _parentElement = document.querySelector(".card");
-  _cardModal = this._parentElement.nextElementSibling;
+  _cardModal = this._card_container.lastElementChild;
   _btnCloseCard = document.querySelector(".btn-close-card");
   _testBtn = document.querySelector(".test-btn");
   constructor() {
     super();
+    console.log(this._cardModal);
     this.testBtnClick.call(this);
     this.toggleOnClick.call(
       this,
       this._cardModal,
-      this.toggle.bind(this, this._parentElement, this._cardModal, false)
+      this.toggle.bind(this, this._card_container, this._cardModal, false)
     );
     this.btnClickCard.call(this);
   }
@@ -21,29 +23,29 @@ class Card extends View {
     const btn = document.querySelector(".btn-close-card");
     this.toggleOnClick(
       btn,
-      this.toggle.bind(this, this._parentElement, this._cardModal, false)
+      this.toggle.bind(this, this._card_container, this._cardModal, false)
     );
     return "";
   }
   testBtnClick() {
     this._testBtn.addEventListener(
       "click",
-      this.toggle.bind(this, this._parentElement, this._cardModal, false)
+      this.toggle.bind(this, this._card_container, this._cardModal, false)
     );
   }
   toggleCard() {
     this._cardModal.classList.toggle("hidden");
-    this._parentElement.classList.toggle("hidden");
+    this._card_container.classList.toggle("hidden");
   }
-  timeOfdayTemp(data, time) {
-    return "";
-  }
+
   _generateMarkup(data, location) {
     return `
      <svg class="card-image">
-        <use href="${icons}#${data.date.day_night.toUpperCase()}-${
-      data.icon
-    }"></use>
+        <use href="${icons}#${
+      data.daily
+        ? data.date.hour.day_night.toUpperCase()
+        : data.date.day_night.toUpperCase()
+    }-${data.icon}"></use>
       </svg>
       <span class="btn-close-card"><i class="fa-solid fa-xmark"></i></span>
       <div class="card-content">
@@ -53,25 +55,39 @@ class Card extends View {
         <div class="card-grid">
           <div class="card-flex">
             <span class="align--text-left">${data.weather.main}  </span>
-            <div><span>${data.date.time}</span><span class="smaller_font">${
-      data.date.day_night
+            <div><span>${
+              data.daily ? data.date.hour.time : data.date.time
+            }</span><span class="smaller_font">${
+      data.daily ? data.date.hour.day_night : data.date.day_night
     }</span></div>
           </div>
         </div>
-        <div class="card-grid">
+        ${
+          data.daily
+            ? data.temp
+                .map((temp) => this._dailyTemperatureMarkup(temp))
+                .join("")
+            : `<div class="card-grid">
           <span >${data.temp} °C</span>
-         
           <div class="card-flex">
             <svg class="card-weather-icon">
               <use href="${icons}#temp-icon"></use>
             </svg>
-             <span >Temp:</span>
+             <span >${data.temp.key}</span>
           </div>
-        </div>
+        </div>`
+        }
+        ${
+          data.daily
+            ? data.feelsLike
+                .map((el) => this._dailyFeelsLikeMarkup(el))
+                .join("")
+            : `
         <div class="card-grid">
           <span class="align--text-left">Feels like:</span>
           <div>${data.feelsLike}  °C</div>
-        </div>
+        </div>`
+        }
         <div class="card-grid">
           <div>
             <span>${data.humidity} </span>
@@ -105,7 +121,11 @@ class Card extends View {
             <span>Windspeed:</span>
           </div>
         </div>
-        <div class="card-grid">
+        ${data.sunRise && data.sunSet ? this._currHourlyMarkup(data) : ""}
+      </div>`;
+  }
+  _currHourlyMarkup(data) {
+    return `<div class="card-grid">
           <div>
             <span>${data.sunRise.time} </span>
             <span class="smaller_font">${data.sunRise.day_night}</span>
@@ -131,8 +151,24 @@ class Card extends View {
               <use href="${icons}#sunSet-icon"></use>
             </svg>
           </div>
-        </div>
-      </div>`;
+        </div>`;
+  }
+  _dailyTemperatureMarkup(data) {
+    return `<div class="card-grid">
+          <span >${data[1]} °C</span>
+          <div class="card-flex">
+            <svg class="card-weather-icon">
+              <use href="${icons}#temp-icon"></use>
+            </svg>
+             <span>${data[0]} Temp</span>
+          </div>
+        </div>`;
+  }
+  _dailyFeelsLikeMarkup(data) {
+    return `<div class="card-grid">
+          <span >Feels like at ${data[0]}</span>
+          <div>${data[1]}°C</div>
+        </div>`;
   }
 }
 export const card = new Card();

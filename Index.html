@@ -25,9 +25,9 @@
           <input placeholder="Search city" class="search-input" type="text" />
         </form>
         <select class="status" name="status">
+          <option class="option" value="Hourly">Hourly</option>
           <option class="option" value="Current">Current</option>
           <option class="option" value="Daily">Daily</option>
-          <option class="option" value="Hourly">Hourly</option>
         </select>
         <span class="nav-btn"><i class="fa -solid fa-bars bars"></i></span>
       </div>
@@ -44,111 +44,114 @@
     </nav>
     <!-- end of nav -->
     <!-- card -->
-    <div class="card hidden">
-      <svg class="card-image">
-        <use href="./src/Img/icons.svg#PM-Drizzle"></use>
-      </svg>
-      <span class="btn-close-card">
-        <i class="fa-solid fa-xmark"></i>
-      </span>
-      <div class="card-content">
-        <div class="card-grid">
-          <h3 class="align--text-left">Baghdad</h3>
-        </div>
-        <div class="card-grid">
-          <div class="card-flex">
-            <span class="align--text-left">cloudy</span>
+    <div class="card-container hidden">
+      <div class="card">
+        <svg class="card-image">
+          <use href="./src/Img/icons.svg#PM-Drizzle"></use>
+        </svg>
+        <span class="btn-close-card">
+          <i class="fa-solid fa-xmark"></i>
+        </span>
+        <div class="card-content">
+          <div class="card-grid">
+            <h3 class="align--text-left">Baghdad</h3>
           </div>
-          <div><span>12:00 </span> <span>AM</span></div>
-        </div>
-        <div class="card-grid">
-          <span>20 C</span>
-          <div class="card-flex">
-            <svg class="card-weather-icon">
-              <use href="./src/Img/icons.svg#temp-icon"></use>
-              <span>Temp:</span>
-            </svg>
+          <div class="card-grid">
+            <div class="card-flex">
+              <span class="align--text-left">cloudy</span>
+            </div>
+            <div><span>12:00 </span> <span>AM</span></div>
           </div>
-        </div>
-        <div class="card-grid">
-          <span class="align--text-left">Feels like:</span>
-          <div>30</div>
-        </div>
-        <div class="card-grid">
-          <div>
-            <span>14 </span>
-            <span>km/h</span>
+          <div class="card-grid">
+            <span>20 C</span>
+            <div class="card-flex">
+              <svg class="card-weather-icon">
+                <use href="./src/Img/icons.svg#temp-icon"></use>
+                <span>Temp:</span>
+              </svg>
+            </div>
           </div>
-          <div class="card-flex">
-            <svg class="card-weather-icon">
-              <use href="./src/Img/icons.svg#humidity-icon"></use>
-            </svg>
-            <span>Humidity:</span>
+          <div class="card-grid">
+            <span class="align--text-left">Feels like:</span>
+            <div>30</div>
           </div>
-        </div>
-        <div class="card-grid">
-          <span>10</span>
-          <div class="card-flex">
-            <svg class="card-weather-icon">
-              <use href="./src/Img/icons.svg#uv-icon"></use>
-            </svg>
-            <span>uv</span>
+          <div class="card-grid">
+            <div>
+              <span>14 </span>
+              <span>km/h</span>
+            </div>
+            <div class="card-flex">
+              <svg class="card-weather-icon">
+                <use href="./src/Img/icons.svg#humidity-icon"></use>
+              </svg>
+              <span>Humidity:</span>
+            </div>
           </div>
-        </div>
-        <div class="card-grid">
-          <span>14</span>
-          <div class="card-flex">
-            <svg class="card-weather-icon">
-              <use href="./src/Img/icons.svg#windSpeed-icon"></use>
-            </svg>
-            <span>Windspeed:</span>
+          <div class="card-grid">
+            <span>10</span>
+            <div class="card-flex">
+              <svg class="card-weather-icon">
+                <use href="./src/Img/icons.svg#uv-icon"></use>
+              </svg>
+              <span>uv</span>
+            </div>
           </div>
-        </div>
-        <div class="card-grid">
-          <div>
-            <span>12:00 </span>
-            <span>PM</span>
+          <div class="card-grid">
+            <span>14</span>
+            <div class="card-flex">
+              <svg class="card-weather-icon">
+                <use href="./src/Img/icons.svg#windSpeed-icon"></use>
+              </svg>
+              <span>Windspeed:</span>
+            </div>
           </div>
-          <div class="card-flex">
-            <svg class="card-weather-icon">
-              <use
-                class="card-weather-icon"
-                href="./src/Img/icons.svg#sunRise-icon"
-              ></use>
-            </svg>
-            <span>Sunrise:</span>
+          <div class="card-grid">
+            <div>
+              <span>12:00 </span>
+              <span>PM</span>
+            </div>
+            <div class="card-flex">
+              <svg class="card-weather-icon">
+                <use
+                  class="card-weather-icon"
+                  href="./src/Img/icons.svg#sunRise-icon"
+                ></use>
+              </svg>
+              <span>Sunrise:</span>
+            </div>
           </div>
-        </div>
-        <div class="card-grid">
-          <div>
-            <span>12:00</span>
-            <span>AM</span>
+          <div class="card-grid">
+            <div>
+              <span>12:00</span>
+              <span>AM</span>
+            </div>
+            <div class="card-flex">
+              <svg class="card-weather-icon">
+                <use
+                  class="card-weather-icon"
+                  href="./src/Img/icons.svg#sunRise-icon"
+                ></use>
+              </svg>
+              <span>Sunrise:</span>
+            </div>
           </div>
-          <div class="card-flex">
-            <svg class="card-weather-icon">
-              <use
-                class="card-weather-icon"
-                href="./src/Img/icons.svg#sunRise-icon"
-              ></use>
-            </svg>
-            <span>Sunrise:</span>
-          </div>
-        </div>
-        <div class="card-grid">
-          <div>
-            <span>12:00 </span>
-            <span>AM</span>
-          </div>
-          <div class="card-flex">
-            <span>Sunset:</span>
-            <svg class="card-weather-icon">
-              <use href="./src/Img/icons.svg#sunSet-icon"></use>
-            </svg>
+          <div class="card-grid">
+            <div>
+              <span>12:00 </span>
+              <span>AM</span>
+            </div>
+            <div class="card-flex">
+              <span>Sunset:</span>
+              <svg class="card-weather-icon">
+                <use href="./src/Img/icons.svg#sunSet-icon"></use>
+              </svg>
+            </div>
           </div>
         </div>
       </div>
+      <div class="modal hidden"></div>
     </div>
-    <div class="modal hidden"></div>
+
     <!-- end of card -->
     <div class="display">
       <ul class="row-display">
