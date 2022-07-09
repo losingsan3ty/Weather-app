@@ -1,6 +1,6 @@
 import icons from "./../../Img/icons.svg";
 import View from "./View.js";
-
+import { captilize } from "../helpers";
 // console.log(icons);
 class Card extends View {
   _card_container = document.querySelector(".card-container");
@@ -10,7 +10,7 @@ class Card extends View {
   _testBtn = document.querySelector(".test-btn");
   constructor() {
     super();
-    console.log(this._cardModal);
+    // console.log(this._cardModal);
     this.testBtnClick.call(this);
     this.toggleOnClick.call(
       this,
@@ -41,11 +41,9 @@ class Card extends View {
   _generateMarkup(data, location) {
     return `
      <svg class="card-image">
-        <use href="${icons}#${
-      data.daily
-        ? data.date.hour.day_night.toUpperCase()
-        : data.date.day_night.toUpperCase()
-    }-${data.icon}"></use>
+        <use href="${icons}#${data.date.hour.day_night.toUpperCase()}-${
+      data.icon
+    }"></use>
       </svg>
       <span class="btn-close-card"><i class="fa-solid fa-xmark"></i></span>
       <div class="card-content">
@@ -56,9 +54,9 @@ class Card extends View {
           <div class="card-flex">
             <span class="align--text-left">${data.weather.main}  </span>
             <div><span>${
-              data.daily ? data.date.hour.time : data.date.time
+              data.date.hour.time
             }</span><span class="smaller_font">${
-      data.daily ? data.date.hour.day_night : data.date.day_night
+      data.date.hour.day_night
     }</span></div>
           </div>
         </div>
@@ -160,13 +158,13 @@ class Card extends View {
             <svg class="card-weather-icon">
               <use href="${icons}#temp-icon"></use>
             </svg>
-             <span>${data[0]} Temp</span>
+             <span>${captilize(data[0])} Temp:</span>
           </div>
         </div>`;
   }
   _dailyFeelsLikeMarkup(data) {
     return `<div class="card-grid">
-          <span >Feels like at ${data[0]}</span>
+          <span >Feels like at ${data[0]}:</span>
           <div>${data[1]}°C</div>
         </div>`;
   }

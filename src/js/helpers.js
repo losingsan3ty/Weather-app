@@ -28,3 +28,6 @@ export const getHour = function (unix) {
 
   return { time: time.slice(0, time.indexOf(" ")), day_night };
 };
+export const captilize = function (string) {
+  return string[0].slice(0, 1).toUpperCase() + string.slice(1);
+};

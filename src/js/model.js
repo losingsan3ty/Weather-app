@@ -97,7 +97,7 @@ class Data {
     const temp = {
       ...(daily && { daily: true }),
       icon: this._icon_id_finder(data.weather),
-      date: daily ? this._getDay(tempData.dt) : getHour(tempData.dt),
+      date: this._getDay(tempData.dt),
       humidity: tempData.humidity,
       temp: daily ? Object.entries(tempData.temp) : tempData.temp,
       weather: Object.freeze(tempData.weather[0]),

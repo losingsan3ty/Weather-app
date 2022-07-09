@@ -1,3 +1,4 @@
+import { captilize } from "./helpers";
 import { Model } from "./model";
 import { card } from "./view/cardView";
 import dailyHourlyView from "./view/daily-hourlyView";
