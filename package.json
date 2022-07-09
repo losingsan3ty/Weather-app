@@ -2,10 +2,11 @@
   "name": "weather-app",
   "version": "1.0.0",
   "description": "Simple weather site",
-  "default":"index.html",
+  "default": "index.html",
   "scripts": {
     "start": "parcel Index.html ",
-    "build": "parcel build index.html --dist-dir ./dist"
+    "build": "parcel build index.html --dist-dir ./dist",
+    "CI": "npm run build"
   },
   "author": "Adnan",
   "license": "ISC",
