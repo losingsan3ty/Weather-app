@@ -3,18 +3,28 @@ import icons from "./../../Img/icons.svg";
 import { captilize } from "../helpers";
 class DailyHourlyView extends View {
   _parentElement = document.querySelector(".row-display");
-  _generateMarkup() {
-    return this._data
+  _daily = document.querySelector(".daily");
+  _hourly = document.querySelector(".hourly");
+  _generateMarkup(data, location) {
+    console.log(data.hourly);
+    return `${this._data.daily
       .map((element) => {
         return this._generateMarkupPreview(element);
       })
-      .join("");
-    // console.log(a);
+      .join("")}${this._data.hourly
+      .map((element) => {
+        return this._generateMarkupPreview(element);
+      })
+      .join("")};
+   `; // console.log(a);`
   }
-
+  toggleCard() {
+    this._parentElement.toggle("hidden");
+    this._card_container.classList.toggle("hidden");
+  }
   _generateMarkupPreview(data) {
     return `
-        <li class="preview">
+        <li class="preview ${data.daily ? "daily" : "hourly"}">
           <span>${data.date.weekday}</span><span>${data.date.hour.time}<span>${
       data.date.hour.day_night
     }</span></span>

@@ -12,11 +12,9 @@ const renderSearchResult = async function () {
       return;
     }
     const data = await Model.getWeatherData(query);
-    dailyHourlyView.render(data.hourly);
     card.render(data.daily[0], data.location);
-    console.log(data.hourly);
-    console.log(data.daily);
-    console.log(data.curr);
+    console.log(data);
+    dailyHourlyView.render(data);
   } catch (err) {
     console.error(err.message);
   }
@@ -25,6 +23,12 @@ const showSelectOption = function (value) {
   const selectValue = value.toLowerCase();
   if (selectValue === "current") {
     card.toggleCard();
+  }
+  if (selectValue === "hourly") {
+    dailyHourlyView.toggle(hourly);
+  }
+  if (selectValue === "daily") {
+    dailyHourlyView.toggle(daily);
   }
 };
 const init = function () {

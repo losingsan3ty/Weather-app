@@ -157,7 +157,7 @@ class Data {
       const { lat, lon } = await this._getLanLon(query);
       // console.log(lat, lon);
       const data = await this._weatherData(lat, lon);
-      console.log(data);
+
       const curr = this._createWeatherObject(data.current);
       // console.log(curr);
       const hourly = data.hourly.map((hour) => {

@@ -10,5 +10,9 @@
   "license": "ISC",
   "devDependencies": {
     "parcel": "^2.5.0"
-  }
+  },
+  "resolvers": [
+    "@parcel/resolver-glob",
+    "..."
+  ]
 }
