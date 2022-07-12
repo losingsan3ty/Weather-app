@@ -21,15 +21,11 @@ const renderSearchResult = async function () {
 };
 const showSelectOption = function (value) {
   const selectValue = value.toLowerCase();
+
   if (selectValue === "current") {
     card.toggleCard();
   }
-  if (selectValue === "hourly") {
-    dailyHourlyView.toggle(hourly);
-  }
-  if (selectValue === "daily") {
-    dailyHourlyView.toggle(daily);
-  }
+  dailyHourlyView.toggleDailyHourly();
 };
 const init = function () {
   searchView.addHandlerSearch(renderSearchResult);

@@ -26,8 +26,8 @@
         </form>
         <select class="status" name="status">
           <option class="option" value="Hourly">Hourly</option>
+          <option class="option" value="Daily" selected>Daily</option>
           <option class="option" value="Current">Current</option>
-          <option class="option" value="Daily">Daily</option>
         </select>
         <span class="nav-btn"><i class="fa -solid fa-bars bars"></i></span>
       </div>
@@ -154,20 +154,8 @@
 
     <!-- end of card -->
     <div class="display">
-      <ul class="row-display">
-        <!-- <li class="preview">
-          <span>day/hour</span>
-          <span>
-            <img
-              class="preview-image"
-              src="http://openweathermap.org/img/wn/10d@2x.png"
-              alt="icon"
-          /></span>
-          <span>15C</span>
-          <span>clear</span>
-          <span class="preview-btn">more info</span>
-        </li> -->
-      </ul>
+      <ul class="row-display daily"></ul>
+      <ul class="row-display hourly hidden"></ul>
     </div>
     <div class="test"></div>
     <footer>

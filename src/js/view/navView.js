@@ -23,6 +23,9 @@ class Nav extends View {
       this.toggle.bind(this, this._parentElement, this._navModal, true)
     );
   }
+  selectEltoDaily() {
+    this._selectEl.value = "Daily";
+  }
   initialSelectOption() {
     return this._selectEl.value;
   }

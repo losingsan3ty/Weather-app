@@ -11,6 +11,7 @@ class Card extends View {
   constructor() {
     super();
     // console.log(this._cardModal);
+
     this.testBtnClick.call(this);
     this.toggleOnClick.call(
       this,
@@ -19,6 +20,11 @@ class Card extends View {
     );
     this.btnClickCard.call(this);
   }
+  isCardHidden() {
+    if (this._card_container.classList.contains("hidden")) return true;
+    return false;
+  }
+
   btnClickCard() {
     const btn = document.querySelector(".btn-close-card");
     this.toggleOnClick(

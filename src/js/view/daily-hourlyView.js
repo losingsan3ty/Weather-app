@@ -2,29 +2,40 @@ import View from "./View";
 import icons from "./../../Img/icons.svg";
 import { captilize } from "../helpers";
 class DailyHourlyView extends View {
-  _parentElement = document.querySelector(".row-display");
-  _daily = document.querySelector(".daily");
-  _hourly = document.querySelector(".hourly");
-  _generateMarkup(data, location) {
-    console.log(data.hourly);
-    return `${this._data.daily
-      .map((element) => {
-        return this._generateMarkupPreview(element);
-      })
-      .join("")}${this._data.hourly
-      .map((element) => {
-        return this._generateMarkupPreview(element);
-      })
-      .join("")};
-   `; // console.log(a);`
+  _parentElement = document.querySelector(".display");
+
+  constructor() {
+    super();
+    console.log(this._parentElement);
   }
-  toggleCard() {
-    this._parentElement.toggle("hidden");
-    this._card_container.classList.toggle("hidden");
+  _generateMarkup(data, location) {
+    return `${this.dailyHourlyMarkup(data.daily)}${this.dailyHourlyMarkup(
+      data.hourly
+    )}`;
+  }
+  toggleDailyHourly() {
+    const daily = this._parentElement.querySelector(".daily");
+    const hourly = this._parentElement.querySelector(".hourly");
+    daily.classList.toggle("hidden");
+    hourly.classList.toggle("hidden");
+  }
+  toggleEntireDisplay() {
+    this._parentElement.classList.toggle("hidden");
+  }
+  dailyHourlyMarkup(data) {
+    console.log(data);
+    return `
+    <ul class="row-display ${data[0].daily ? "daily" : "hourly hidden"}">
+     ${data
+       .map((element) => {
+         return this._generateMarkupPreview(element);
+       })
+       .join("")}
+      </ul>`;
   }
   _generateMarkupPreview(data) {
     return `
-        <li class="preview ${data.daily ? "daily" : "hourly"}">
+        <li class="preview" >
           <span>${data.date.weekday}</span><span>${data.date.hour.time}<span>${
       data.date.hour.day_night
     }</span></span>
@@ -43,7 +54,8 @@ class DailyHourlyView extends View {
           °C</span>`
          }
           <span class="preview-btn">more info</span>
-        </li>`;
+        </li>
+       `;
   }
   _dailyTemperatureMarkup(data) {
     return `<span>${captilize(data[0])} : ${data[1]}°C</span>
