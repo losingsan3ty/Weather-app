@@ -6,7 +6,6 @@ class DailyHourlyView extends View {
 
   constructor() {
     super();
-    console.log(this._parentElement);
   }
   _generateMarkup(data, location) {
     return `${this.dailyHourlyMarkup(data.daily)}${this.dailyHourlyMarkup(
@@ -53,7 +52,7 @@ class DailyHourlyView extends View {
              : `<span>${data.temp}
           °C</span>`
          }
-          <span class="preview-btn">more info</span>
+         
         </li>
        `;
   }

@@ -2,6 +2,7 @@ import { card } from "./cardView";
 
 export default class View {
   _data;
+  _selectEl = document.querySelector(".status");
 
   toggleOnClick(El, toggleFunction) {
     El.addEventListener("click", toggleFunction);

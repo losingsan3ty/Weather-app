@@ -21,7 +21,6 @@ const renderSearchResult = async function () {
 };
 const showSelectOption = function (value) {
   const selectValue = value.toLowerCase();
-
   if (selectValue === "current") {
     card.toggleCard();
   }
@@ -29,6 +28,6 @@ const showSelectOption = function (value) {
 };
 const init = function () {
   searchView.addHandlerSearch(renderSearchResult);
-  navView.addHandlerSelect(showSelectOption);
+  card.addHandlerSelect(showSelectOption);
 };
 init();

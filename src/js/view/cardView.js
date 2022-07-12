@@ -3,6 +3,7 @@ import View from "./View.js";
 import { captilize } from "../helpers";
 // console.log(icons);
 class Card extends View {
+  _currSelectOption;
   _card_container = document.querySelector(".card-container");
   _parentElement = document.querySelector(".card");
   _cardModal = this._card_container.lastElementChild;
@@ -10,40 +11,40 @@ class Card extends View {
   _testBtn = document.querySelector(".test-btn");
   constructor() {
     super();
-    // console.log(this._cardModal);
-
-    this.testBtnClick.call(this);
+    // this.testBtnClick.call(this);
     this.toggleOnClick.call(
       this,
       this._cardModal,
-      this.toggle.bind(this, this._card_container, this._cardModal, false)
+      this.toggleCard.bind(this, true)
     );
     this.btnClickCard.call(this);
   }
-  isCardHidden() {
-    if (this._card_container.classList.contains("hidden")) return true;
-    return false;
+  initialSelectOption() {
+    return this._selectEl.value;
   }
-
+  addHandlerSelect(handler) {
+    this._currSelectOption = "Daily";
+    const a = this;
+    this._selectEl.addEventListener("change", function (e) {
+      if (!this.value) return;
+      if (this.value !== "Current") a._currSelectOption = this.value;
+      handler(this.value);
+    });
+  }
   btnClickCard() {
     const btn = document.querySelector(".btn-close-card");
-    this.toggleOnClick(
-      btn,
-      this.toggle.bind(this, this._card_container, this._cardModal, false)
-    );
+    this.toggleOnClick(btn, this.toggleCard.bind(this, true));
     return "";
   }
-  testBtnClick() {
-    this._testBtn.addEventListener(
-      "click",
-      this.toggle.bind(this, this._card_container, this._cardModal, false)
-    );
-  }
-  toggleCard() {
-    this._cardModal.classList.toggle("hidden");
-    this._card_container.classList.toggle("hidden");
-  }
+  // testBtnClick() {
+  //   this._testBtn.addEventListener("click", this.toggleCard.bind(this, false));
+  // }
+  toggleCard(daily = false) {
+    this.toggle(this._card_container, this._cardModal, false);
+    // console.log(this._currSelectOption);
 
+    daily ? (this._selectEl.value = this._currSelectOption) : "";
+  }
   _generateMarkup(data, location) {
     return `
      <svg class="card-image">
