@@ -12,8 +12,7 @@ const renderSearchResult = async function () {
       return;
     }
     const data = await Model.getWeatherData(query);
-    card.render(data.daily[0], data.location);
-    console.log(data);
+    card.render(data.curr, data.location);
     dailyHourlyView.render(data);
   } catch (err) {
     console.error(err.message);
@@ -23,8 +22,9 @@ const showSelectOption = function (value) {
   const selectValue = value.toLowerCase();
   if (selectValue === "current") {
     card.toggleCard();
+    return;
   }
-  dailyHourlyView.toggleDailyHourly();
+  dailyHourlyView.toggleDailyHourly(value);
 };
 const init = function () {
   searchView.addHandlerSearch(renderSearchResult);

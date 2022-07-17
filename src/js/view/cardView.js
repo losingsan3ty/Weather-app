@@ -3,7 +3,7 @@ import View from "./View.js";
 import { captilize } from "../helpers";
 // console.log(icons);
 class Card extends View {
-  _currSelectOption;
+  _previousSelectOption;
   _card_container = document.querySelector(".card-container");
   _parentElement = document.querySelector(".card");
   _cardModal = this._card_container.lastElementChild;
@@ -23,11 +23,13 @@ class Card extends View {
     return this._selectEl.value;
   }
   addHandlerSelect(handler) {
-    this._currSelectOption = "Daily";
     const a = this;
     this._selectEl.addEventListener("change", function (e) {
       if (!this.value) return;
-      if (this.value !== "Current") a._currSelectOption = this.value;
+      // console.log(this.value);
+      if (this.value !== "Current") {
+        a._previousSelectOption = this.value;
+      }
       handler(this.value);
     });
   }
@@ -36,16 +38,18 @@ class Card extends View {
     this.toggleOnClick(btn, this.toggleCard.bind(this, true));
     return "";
   }
-  // testBtnClick() {
-  //   this._testBtn.addEventListener("click", this.toggleCard.bind(this, false));
-  // }
+  selecValueChange(value) {
+    if (!value) return;
+    this._selectEl.value = value;
+  }
   toggleCard(daily = false) {
     this.toggle(this._card_container, this._cardModal, false);
-    // console.log(this._currSelectOption);
 
-    daily ? (this._selectEl.value = this._currSelectOption) : "";
+    if (!this._previousSelectOption) return;
+    this.selecValueChange(this._previousSelectOption);
   }
   _generateMarkup(data, location) {
+    // console.log(data);
     return `
      <svg class="card-image">
         <use href="${icons}#${data.date.hour.day_night.toUpperCase()}-${
@@ -78,7 +82,7 @@ class Card extends View {
             <svg class="card-weather-icon">
               <use href="${icons}#temp-icon"></use>
             </svg>
-             <span >${data.temp.key}</span>
+             <span >Temp:</span>
           </div>
         </div>`
         }

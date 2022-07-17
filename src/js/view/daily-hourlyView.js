@@ -12,17 +12,23 @@ class DailyHourlyView extends View {
       data.hourly
     )}`;
   }
-  toggleDailyHourly() {
+  toggleDailyHourly(value) {
     const daily = this._parentElement.querySelector(".daily");
     const hourly = this._parentElement.querySelector(".hourly");
-    daily.classList.toggle("hidden");
-    hourly.classList.toggle("hidden");
+    const dailyOrHourly = value.toLowerCase();
+    // console.log(dailyOrHourly);
+    if (dailyOrHourly === "daily") daily.classList.remove("hidden");
+    hourly.classList.add("hidden");
+    if (dailyOrHourly === "hourly") {
+      daily.classList.add("hidden");
+      hourly.classList.remove("hidden");
+    }
   }
   toggleEntireDisplay() {
     this._parentElement.classList.toggle("hidden");
   }
   dailyHourlyMarkup(data) {
-    console.log(data);
+    // console.log(data);
     return `
     <ul class="row-display ${data[0].daily ? "daily" : "hourly hidden"}">
      ${data
