@@ -19,9 +19,10 @@ class Card extends View {
     );
     this.btnClickCard.call(this);
   }
-  initialSelectOption() {
+  selectOptionValue() {
     return this._selectEl.value;
   }
+
   addHandlerSelect(handler) {
     const a = this;
     this._selectEl.addEventListener("change", function (e) {

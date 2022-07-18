@@ -30,7 +30,7 @@ class DailyHourlyView extends View {
   dailyHourlyMarkup(data) {
     // console.log(data);
     return `
-    <ul class="row-display ${data[0].daily ? "daily" : "hourly hidden"}">
+    <ul class="row-display ${data[0].daily ? "daily" : "hourly "}">
      ${data
        .map((element) => {
          return this._generateMarkupPreview(element);

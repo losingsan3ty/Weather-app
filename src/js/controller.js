@@ -14,6 +14,8 @@ const renderSearchResult = async function () {
     const data = await Model.getWeatherData(query);
     card.render(data.curr, data.location);
     dailyHourlyView.render(data);
+    const select = card.selectOptionValue();
+    dailyHourlyView.toggleDailyHourly(select);
   } catch (err) {
     console.error(err.message);
   }
