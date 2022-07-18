@@ -5,8 +5,7 @@
   "default": "index.html",
   "scripts": {
     "start": "parcel Index.html ",
-    "build": "parcel build index.html --dist-dir ./dist",
-    "CI": "npm run build"
+    "build": "parcel build Index.html --dist-dir ./dist"
   },
   "author": "Adnan",
   "license": "ISC",
@@ -14,7 +13,6 @@
     "parcel": "^2.5.0"
   },
   "resolvers": [
-    "@parcel/resolver-glob",
-    "..."
+    "@parcel/resolver-glob"
   ]
 }
