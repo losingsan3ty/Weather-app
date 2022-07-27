@@ -32,6 +32,7 @@ export default class View {
     // console.log(this);
     // this._parentElement.insertAdjacentHTML("afterbegin", "hi");
     this._parentElement.insertAdjacentHTML('afterbegin', markup);
+    if ('_cardModal' in this) this.btnClickCard();
   }
 
   _clear() {

@@ -220,13 +220,14 @@ ul > li {
   width: 100%;
   /* position: fixed; */
   height: 100%;
-  transition: all 2s ease;
+
   margin-top: var(--card-calc);
   display: flex;
   align-items: center;
   justify-content: center;
 }
 .card {
+  transition: all 2s ease;
   z-index: 4;
   position: relative;
   border: solid black 2px;

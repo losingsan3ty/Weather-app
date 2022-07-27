@@ -5,7 +5,7 @@ import View from './View';
 import { captilize } from '../helpers';
 // console.log(icons);
 class Card extends View {
-  _previousSelectOption;
+  _previousSelectOption = 'Daily';
 
   _card_container = document.querySelector('.card-container');
 
@@ -18,7 +18,7 @@ class Card extends View {
 
   // constructor() {
   //   super();
-  //   // console.log(this._cardModal);
+  //   this.addCloseButtonEvent();
   // }
 
   selectOptionValue() {
@@ -27,6 +27,7 @@ class Card extends View {
 
   toggleModal() {
     // console.log(this);
+
     this.toggleOnClick.call(this, this._cardModal, this.toggleCard.bind(this));
     return '';
   }
@@ -47,21 +48,21 @@ class Card extends View {
   }
 
   btnClickCard() {
-    const btn = document.querySelector('.btn-close-card');
-    this.toggleOnClick(btn, this.toggleCard.bind(this));
-    return '';
+    const btn = this._parentElement.querySelector('.btn-close-card');
+    if (btn) {
+      this.toggleOnClick(btn, this.toggleCard.bind(this));
+    }
   }
 
   selecValueChange(value) {
     if (!value) value = 'Daily';
-    // console.log(this._selectEl);
-    console.log(value);
+    // console.log(value);
     this._selectEl.value = value;
     this._selectEl.dispatchEvent(new Event('change'));
   }
 
   toggleCard() {
-    // this.toggle(this._card_container, this._cardModal, false);
+    // console.log(this);
     this._card_container.classList.toggle('hidden');
     this._parentElement.classList.toggle('hiddencard');
     this._cardModal.classList.toggle('hidden');
@@ -200,5 +201,24 @@ class Card extends View {
           <div>${data[1]}°C</div>
         </div>`;
   }
+
+  // addCloseButtonEvent() {
+  //   const targetNode = this._card_container.childNodes[1];
+  //   const config = { childList: true, subtree: true };
+  //   const cardView = this;
+  //   const callback = function (mutationsList, observer) {
+  //     mutationsList.forEach((mutation) => {
+  //       if (mutation.type === 'childList') {
+  //         const btn = cardView._parentElement.querySelector('.btn-close-card');
+  //         if (btn) {
+  //           cardView.btnClickCard(btn);
+  //         }
+  //       }
+  //     }, this);
+  //   };
+
+  // const observer = new MutationObserver(callback);
+  // observer.observe(targetNode, config);
+  // }
 }
 export default new Card();
