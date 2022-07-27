@@ -1,13 +1,18 @@
-import View from "./View";
+/* eslint-disable node/no-unsupported-features/es-syntax */
+import View from './View';
+
 class Nav extends View {
-  _navModal = document.querySelector(".modal");
-  _parentElement = document.querySelector(".nav-menu");
-  _navBtn = document.querySelector(".nav-btn");
-  _btnCloseNav = document.querySelector(".btn-close-menu");
+  _navModal = document.querySelector('.modal');
+
+  _parentElement = document.querySelector('.nav-menu');
+
+  _navBtn = document.querySelector('.nav-btn');
+
+  _btnCloseNav = document.querySelector('.btn-close-menu');
 
   constructor() {
     super();
-
+    // console.log(this._navModal);
     this.toggleOnClick.call(
       this,
       this._navBtn,

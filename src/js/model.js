@@ -1,19 +1,21 @@
+/* eslint-disable node/no-unsupported-features/es-syntax */
+
 import {
   API_GEOCODING_URL,
   API_KEY,
   API_WEATHER_DATA_URL,
-  DELAY,
   UNITS,
-} from "./config";
-import { getHour, getJson, timeout } from "./helpers";
+} from './config';
+import { getHour, getJson } from './helpers';
 /**
  * @class  for functions encpasulation only
  
  */
 class Data {
   _locationFail = function () {
-    throw new Error("failed to retrive your location");
+    throw new Error('failed to retrive your location');
   };
+
   /**
    * purpsoe is to promisify the geoLocation process
    * @returns {object}  promise
@@ -23,69 +25,72 @@ class Data {
       navigator.geolocation?.getCurrentPosition(resolve, reject);
     });
   };
+
   /**
    *
    * @param {string} main weather short description from Api
    */
   _icon_id_finder(weather) {
     // console.log(weather);
-    const main = weather[0].main;
+    const { main } = weather[0];
     // console.log(weather.main);
-    const description = weather[0].description;
+    const { description } = weather[0];
     // console.log(weather.description);
-    if (main === "Thunderstorm") {
-      return "Thunderstorm";
+    if (main === 'Thunderstorm') {
+      return 'Thunderstorm';
     }
-    if (main === "Drizzle") {
-      return "Drizzle";
+    if (main === 'Drizzle') {
+      return 'Drizzle';
     }
-    if (main === "Rain") {
-      if (description === "freezing rain") return "Snow";
+    if (main === 'Rain') {
+      if (description === 'freezing rain') return 'Snow';
       if (
-        description === "light intensity shower rain" ||
-        description === "heavy intensity shower rain	" ||
-        description === "light intensity shower rain" ||
-        description === "ragged shower rain	"
+        description === 'light intensity shower rain' ||
+        description === 'heavy intensity shower rain	' ||
+        description === 'light intensity shower rain' ||
+        description === 'ragged shower rain	'
       )
-        return "Shower-Rain";
+        return 'Shower-Rain';
 
-      return "Rain";
+      return 'Rain';
     }
-    if (main === "Snow") {
-      return "Snow";
+    if (main === 'Snow') {
+      return 'Snow';
     }
     if (
-      main === "Mist" ||
-      main === "Fog" ||
-      main === "Smoke" ||
-      main === "Haze" ||
-      main === "Dust" ||
-      main === "Ash" ||
-      main === "Squall" ||
-      main === "Tornado" ||
-      main === "Sand"
+      main === 'Mist' ||
+      main === 'Fog' ||
+      main === 'Smoke' ||
+      main === 'Haze' ||
+      main === 'Dust' ||
+      main === 'Ash' ||
+      main === 'Squall' ||
+      main === 'Tornado' ||
+      main === 'Sand'
     ) {
-      return "Dust";
+      return 'Dust';
     }
-    if (main === "Clouds") {
-      if (description === "few clouds") return "Few-Clouds";
-      if (description === "scattered clouds") return "Scattered-Clouds";
-      if (description === "broken clouds" || description === "overcast clouds")
-        return "Broken-Clouds";
+    if (main === 'Clouds') {
+      if (description === 'few clouds') return 'Few-Clouds';
+      if (description === 'scattered clouds') return 'Scattered-Clouds';
+      if (description === 'broken clouds' || description === 'overcast clouds')
+        return 'Broken-Clouds';
     }
-    return "Clear";
+    return 'Clear';
   }
+
   /**
    * @param {number} unix time stamp provided from the api
    * @returns {Object}
    */
   _getDay(unix) {
-    const weekday = new Date(unix * 1000).toLocaleString("default", {
-      weekday: "long",
+    const weekday = new Date(unix * 1000).toLocaleString('default', {
+      weekday: 'long',
     });
     const hour = getHour(unix);
     return { weekday, hour };
   }
+
   /**
    *
    * @param {object} data
@@ -111,6 +116,7 @@ class Data {
     };
     return Object.freeze(temp);
   }
+
   /**
    * a general over view about this function:it either gives lat lon based on geolocation api or based on search result from user
    * @param {boolean} query if there is a value that means we have a search result given from the user so we use a different link of the Api to fetch data based on search result if
@@ -129,10 +135,11 @@ class Data {
       const { latitude: lat, longitude: lon } = position.coords;
       return { lat, lon };
     } catch (err) {
-      console.error("from Get Latlon", err);
+      console.error('from Get Latlon', err);
       throw new Error(err.message);
     }
   };
+
   /**
    *
    * @param {string} query here is a city name recived from the user
@@ -147,6 +154,7 @@ class Data {
     // console.log(test);
     return await getJson(res);
   };
+
   /**
    *
    * @param {boolean} query if there is a value meaning we have user search
@@ -168,8 +176,8 @@ class Data {
         return this._createWeatherObject(day, true);
       });
       const location = data.timezone
-        .slice(data.timezone.indexOf("/") + 1)
-        .replace("_", " ");
+        .slice(data.timezone.indexOf('/') + 1)
+        .replace('_', ' ');
       // console.log(curr);
       // console.log(hourly);
       // console.log(daily);
@@ -178,6 +186,7 @@ class Data {
       console.log(err.message);
     }
   };
+
   /**
    *
    * @param {number} lat
@@ -191,7 +200,7 @@ class Data {
       );
       return await getJson(res);
     } catch (err) {
-      console.error("err from Ajax", err);
+      console.error('err from Ajax', err);
       throw new Error(err);
     }
   };
@@ -199,4 +208,4 @@ class Data {
 
 // AJAX();
 
-export const Model = new Data();
+export default new Data();

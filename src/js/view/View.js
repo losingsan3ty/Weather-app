@@ -1,11 +1,13 @@
-import { card } from "./cardView";
+/* eslint-disable node/no-unsupported-features/es-syntax */
+import icons from '../../Img/icons.svg';
 
 export default class View {
   _data;
-  _selectEl = document.querySelector(".status");
+
+  _selectEl = document.querySelector('.status');
 
   toggleOnClick(El, toggleFunction) {
-    El.addEventListener("click", toggleFunction);
+    El.addEventListener('click', toggleFunction);
   }
 
   /**
@@ -15,9 +17,10 @@ export default class View {
    * @param {*} nav in case of nav we change hidden to (nav-slide)
    */
   toggle(El, Modal, nav = false) {
-    El.classList.toggle(nav ? "nav-slide" : "hidden");
-    Modal.classList.toggle("hidden");
+    El.classList.toggle(nav ? 'nav-slide' : 'hidden');
+    Modal.classList.toggle('hidden');
   }
+
   render(data, location) {
     // if (!data || (Array.isArray(data) && data.length === 0))
     //   return this.renderError();
@@ -28,12 +31,13 @@ export default class View {
     this._clear();
     // console.log(this);
     // this._parentElement.insertAdjacentHTML("afterbegin", "hi");
-    this._parentElement.insertAdjacentHTML("afterbegin", markup);
-    if (this === card) card.btnClickCard();
+    this._parentElement.insertAdjacentHTML('afterbegin', markup);
   }
+
   _clear() {
-    this._parentElement.innerHTML = "";
+    this._parentElement.innerHTML = '';
   }
+
   renderError(message = this._errorMessage) {
     const markup = `
     <div class="error">
@@ -46,8 +50,9 @@ export default class View {
     </div>  
     `;
     this._clear();
-    this._parentElement.insertAdjacentHTML("afterbegin", markup);
+    this._parentElement.insertAdjacentHTML('afterbegin', markup);
   }
+
   renderMessage(message = this._message) {
     const markup = `
     <div class="message">
@@ -60,6 +65,6 @@ export default class View {
     </div>
     `;
     this._clear();
-    this._parentElement.insertAdjacentHTML("afterbegin", markup);
+    this._parentElement.insertAdjacentHTML('afterbegin', markup);
   }
 }

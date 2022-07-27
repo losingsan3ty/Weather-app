@@ -1,24 +1,37 @@
 /* General rest */
-@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap");
-
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap');
+html {
+  font-family: var(--main-font);
+}
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  overflow: hidden;
 }
 :root {
-  --main-font: "Oswald", sans-serif;
+  --main-font: 'Oswald', sans-serif;
   --card-calc: calc(1rem + 0.4vw + 0.4vh);
   --nav-calc: calc(1rem + 0.5vw);
   --preview-calc: calc(1rem + 0.5vw);
 }
 /* general classes */
-h1,
-h2,
-h3,
-span {
-  font-family: var(--main-font);
+a {
+  text-decoration: none;
+  font-weight: 560;
+  text-transform: uppercase;
 }
+body {
+  font-weight: 400;
+  font-size: 1.315rem;
+  line-height: 1.2;
+}
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
 ul {
   list-style: none;
 }
@@ -199,14 +212,15 @@ ul > li {
   font-size: calc(2rem + 1vw);
   position: absolute;
   top: 1%;
-  right: 5%;
+  right: 1%;
   z-index: 4;
 }
 
 .card-container {
   width: 100%;
+  /* position: fixed; */
   height: 100%;
-
+  transition: all 2s ease;
   margin-top: var(--card-calc);
   display: flex;
   align-items: center;
@@ -220,33 +234,35 @@ ul > li {
   display: flex;
   justify-content: center;
   align-items: center;
+
   flex-direction: column;
 }
 .card-content {
-  font-size: calc(0.7rem + 0.5vw + 0.5vh);
+  /* font-size: calc(0.7rem + 0.5vw + 0.5vh); */
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  z-index: 10;
+  /* grid-template-columns: 1fr 1fr; */
+  grid-template-columns: repeat(auto-fit, minmax(5rem, 1fr));
   gap: calc(0.1rem + 0.7vw + 0.7vh);
   padding: 0 calc(0.2rem + 0.6vw + 0.6vh) calc(0.2rem + 0.6vw + 0.6vh)
     calc(0.5rem + 0.6vw + 0.6vh);
 }
-.smaller_font {
-  font-size: calc(0.6rem + 0.5vw + 0.5vh);
-  padding-left: 0.001rem;
-}
+
 .card-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
+
   align-items: center;
   justify-content: space-between;
   text-align: center;
-  /* height: calc(0.2rem + 9vh);
-  width: calc(5rem + 12vw); */
+  height: calc(0.2rem + 9vh);
+  /* width: calc(4rem + 12vw); */
 }
 
 .card-weather-icon {
+  margin-right: calc(1rem + 1vw);
   height: calc(3rem + 1vh);
-  width: calc(1rem + 1.5vw);
+  width: calc(1.6rem + 1.5vw);
   order: -1;
 }
 
@@ -261,20 +277,18 @@ ul > li {
 
 .card-image {
   order: -1;
-  height: calc(5rem + 7vh);
-  /* width: calc(3.5rem + 7vh); */
+  height: calc(3rem + 7vh);
+  margin-right: 2rem;
 }
 /* end of card */
 .test {
   height: 150vh;
 }
-.test-btn {
-  position: fixed;
-  top: 50%;
-  bottom: 100%;
-  height: 5rem;
-  width: 5rem;
-}
+
 .hidden {
   display: none;
+}
+.hiddencard {
+  /* display: none; */
+  transform: translate(100%, -150%);
 }
